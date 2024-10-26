@@ -1,0 +1,79 @@
+<button (click)="cancle()" style="margin-top: 20px;"class="btn btn-danger">Cancle</button>
+<h1>{{CreateOrEdit}} Book</h1>  
+    <form (ngSubmit)="CreateOrEdit == 'Create'?AddBook(Book):Update(Book)"
+    style="margin: 25px;">
+    <!-- <div class="form-group">
+      <label for="Id">Id</label>
+      <input 
+      [(ngModel)] ="Book.id" 
+      name="id"
+      type="number" class="form-control" id="Id" aria-describedby="emailHelp">
+    </div> -->
+    <div class="form-group">
+      <label for="Title">Title</label>
+      <input
+      [(ngModel)] ="Book.title" 
+      name="title"
+       type="text" class="form-control" id="Title">
+    </div>
+    <div *ngIf="titleExist" style="color: red;">
+        Name Already Exist
+    </div>
+    <div class="form-group">
+      <label for="Price">Price</label>
+      <input
+      [(ngModel)] ="Book.price" 
+      name="price"
+      type="number" class="form-control" id="Price">
+    </div>
+    <div *ngIf="priceError" style="color: red;">
+        Price must be between 100 and 1000
+    </div>
+    <div class="form-group">
+      <label for="Author">Author</label>
+      <input
+      [(ngModel)] ="Book.author"
+      name ="author"
+      type="text" class="form-control" id="Author">
+    </div>
+    <div *ngIf="authorError" style="color: red;">
+        Author name cannot be longer than 50 characters
+    </div>
+    <div class="form-group">
+        <label for="Description">Description</label>
+        <textarea  
+        [(ngModel)] ="Book.description"
+        name="description"
+         type="text" class="form-control" id="Description">
+           
+            
+      </textarea>
+    </div>
+    <div *ngIf="descriptionError" style="color: red;">
+     Description cannot be longer than 500 characters
+    </div>
+    <div class="form-group">
+      <label for="Genre">Genre</label>
+      <input 
+      [(ngModel)] ="Book.genre"
+      name="genre"
+      type="text" class="form-control" id="Genre">
+    </div>
+    <div *ngIf="genreError" style="color: red;">
+    Genre cannot be longer than 30 characters
+   </div>
+    <div class="form-group">
+        <label for="publishedDate">Publish Date</label>
+        <input
+            [(ngModel)]="Book.publishedDate"
+            name="publishedDate"
+            type="date" class="form-control" id="publishedDate">
+    </div>
+    <div *ngIf="publishedDateError" style="color: red;">
+    Published Date is required  
+ </div>
+    
+    
+  
+    <button style="margin-top: 20px;" type="submit" class="btn btn-primary">{{CreateOrEdit}}</button>
+</form>
